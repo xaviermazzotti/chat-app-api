@@ -1,10 +1,14 @@
-﻿using MediatR;
+﻿namespace Message.API.Dtos;
 
-namespace Message.API.Dtos
+public class CreateMessageResponse(bool success, string errorMessage = null!)
 {
-    public class CreateMessageResponse(bool success, string errorMessage = null!) 
-    {
-        public bool Success { get; set; } = success;
-        public string Message { get; set; } = errorMessage;
-    }
+    /// <summary>
+    /// Gets or sets Success.
+    /// </summary>
+    public bool Success { get; set; } = success;
+
+    /// <summary>
+    /// Gets or sets Message.
+    /// </summary>
+    public string Message { get; set; } = errorMessage;
 }

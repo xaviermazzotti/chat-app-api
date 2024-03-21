@@ -4,17 +4,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Message.API.Controllers;
 
+/// <summary>
+/// Initializes a new instance of the <see cref="MessageController"/> class.
+/// </summary>
+/// <param name="mediator">Mediator interface.</param>
 [ApiController]
 [Route("api/[controller]")]
-public class MessageController : ControllerBase
+public class MessageController(IMediator mediator) : ControllerBase
 {
-    private readonly IMediator _mediator;
+    private readonly IMediator _mediator = mediator;
 
-    public MessageController(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
-
+    /// <summary>
+    /// Create message endpoint.
+    /// </summary>
+    /// <param name="createMessageRequest">Message creation request.</param>
+    /// <returns>Message creation response.</returns>
     [HttpPost]
     public async Task<CreateMessageResponse> CreateMessage(CreateMessageRequest createMessageRequest)
     {
